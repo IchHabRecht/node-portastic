@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/IchHabRecht/node-portastic#readme",
   "dependencies": {
-    "@types/node": "0.0.2",
+    "@types/node": "^17.0.23",
     "bluebird": "^2.9.34",
     "commander": "^2.8.1",
     "debug": "^2.2.0"
