@@ -3,6 +3,17 @@
 var portastic = require('../');
 var Command = require('commander').Command;
 var portasticPackage = require('../package.json');
+
+function formatMessage(message, replacements) {
+  return message.replace(/{\w+}/g, function(placeholder) {
+    var key = placeholder.substring(1, placeholder.length - 1);
+    if (key in replacements) {
+      return replacements[key];
+    }
+    return placeholder;
+  });
+}
+
 var commander = new Command();
 commander.version(portasticPackage.version);
 
@@ -11,10 +22,11 @@ commander
   .command('test <port>')
   .alias('t')
   .description('Test if a port is closed or open')
-  .action(function(port) {
+  .option('-m, --message <message>', 'The message to use to display the result', 'Port {port} is {result}')
+  .action(function(port, options) {
     portastic.test(port)
       .then(function(result) {
-        console.log('Port %s is %s', port, result ? 'open' : 'closed');
+        console.log(formatMessage(options.message, {port: port, result: result ? 'open' : 'closed'}));
       });
   });
 
@@ -24,15 +36,17 @@ commander
   .alias('f')
   .description('Find ports that are available to use')
   .option('-r, --retrieve <n>', 'How many ports to retrieve', parseInt)
+  .option('-m, --message <message>', 'The message to use to display the result', 'Ports available to use: {ports}')
+  .option('-d, --delim <delim>', 'The delimiter to use to join multiple ports', ', ')
   .action(function(min, max, options) {
     portastic.find({
       min: min,
       max: max,
       retrieve: options.retrieve
     })
-      .then(function(ports) {
-        console.log('Ports available to use: %s', ports.join(', '));
-      });
+    .then(function(ports) {
+      console.log(formatMessage(options.message, {ports: ports.join(options.delim)}));
+    });
   });
 
 // Filter a list of ports
@@ -40,10 +54,12 @@ commander
   .command('filter <ports...>')
   .alias('i')
   .description('Find ports that are open whithin a list of ports')
-  .action(function(ports) {
+  .option('-m, --message <message>', 'The message to use to display the result', 'Ports available to use: {ports}')
+  .option('-d, --delim <delim>', 'The delimiter to use to join multiple ports', ', ')
+  .action(function(ports, options) {
     portastic.filter(ports)
       .then(function() {
-        console.log('Ports available to use: %s', ports.join(', '));
+        console.log(formatMessage(options.message, {ports: ports.join(options.delim)}));
       });
   });
 
@@ -52,14 +68,15 @@ commander
   .command('monitor <ports...>')
   .alias('m')
   .description('Monitor a list of ports and logs to the terminal when port state had changed')
-  .action(function(ports) {
+  .option('-m, --message <message>', 'The message to use to display the result', 'Port {port} is {result}')
+  .action(function(ports, options) {
     var monitor = new portastic.Monitor(ports);
     monitor.on('open', function(port) {
-      console.log('Port %s is open', port);
+      console.log(formatMessage(options.message, {port: port, result: 'open'}));
     });
 
     monitor.on('close', function(port) {
-      console.log('Port %s is closed', port);
+      console.log(formatMessage(options.message, {port: port, result: 'closed'}));
     });
   });
 
