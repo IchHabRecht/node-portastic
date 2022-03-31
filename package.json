@@ -1,6 +1,6 @@
 {
   "name": "@ichhabrecht/portastic",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Pure javascript swiss knife for port management",
   "main": "index.js",
   "types": "index.d.ts",
