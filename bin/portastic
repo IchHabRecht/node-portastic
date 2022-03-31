@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
 var portastic = require('../');
-var commander = require('commander');
-var package = require('../package.json');
-commander.version(package.version);
+var Command = require('commander').Command;
+var portasticPackage = require('../package.json');
+var commander = new Command();
+commander.version(portasticPackage.version);
 
 // Test if a port is closed
 commander
