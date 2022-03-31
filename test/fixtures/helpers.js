@@ -51,8 +51,9 @@ exports.autoClose = bluebird.method(function(ports, iface, promise) {
   return exports.startTcp(ports, iface)
     .then(function(servers) {
       return bluebird.resolve()
-        .then(promise)
+        .delay(100) // wait for watcher
         .then(function() {
+          promise();
           return exports.stopTcp(servers);
         });
     });
