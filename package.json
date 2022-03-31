@@ -1,5 +1,5 @@
 {
-  "name": "portastic",
+  "name": "@ichhabrecht/portastic",
   "version": "1.0.1",
   "description": "Pure javascript swiss knife for port management",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alanhoff/node-portastic.git"
+    "url": "git+https://github.com/IchHabRecht/node-portastic.git"
   },
   "keywords": [
     "port",
@@ -18,15 +18,15 @@
     "find open",
     "interface"
   ],
-  "author": "Alan Hoffmeister <alanhoffmeister@gmail.com>",
+  "author": "Nicole Cordes <ichhabrecht+github@cordes.co>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/alanhoff/node-portastic/issues"
+    "url": "https://github.com/IchHabRecht/node-portastic/issues"
   },
   "bin": {
     "portastic": "./bin/portastic"
   },
-  "homepage": "https://github.com/alanhoff/node-portastic#readme",
+  "homepage": "https://github.com/IchHabRecht/node-portastic#readme",
   "dependencies": {
     "bluebird": "^2.9.34",
     "commander": "^2.8.1",

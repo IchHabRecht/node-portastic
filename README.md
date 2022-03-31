@@ -1,10 +1,9 @@
-# portastic
-[![Coverage Status](https://coveralls.io/repos/alanhoff/node-portastic/badge.svg?branch=master)][0]
-[![Travis](https://travis-ci.org/alanhoff/node-portastic.svg)][1]
-[![Dependencies](https://david-dm.org/alanhoff/node-portastic.svg)][2]
+# @ichhabrecht/portastic
 
 Pure javascript swiss knife for port management. Find open ports, monitor ports
 and other port relates things.
+
+This package is based on [portastic by Alan Hoffmeister](https://github.com/alanhoff/node-portastic).
 
 ### API
 
@@ -111,7 +110,7 @@ Options:
 ### Testing
 
 ```bash
-git clone git@github.com:alanhoff/node-portastic.git
+git clone git@github.com:IchHabRecht/node-portastic.git
 cd node-portastic
 npm install && npm test
 ```
@@ -128,7 +127,7 @@ DEBUG=portastic:\* npm test
 ### License (ISC)
 
 ```
-Copyright (c) 2015, Alan Hoffmeister <alanhoffmeister@gmail.com>
+Copyright (c) 2022, Nicole Cordes <ichhabrecht+github@cordes.co>, Alan Hoffmeister <alanhoffmeister@gmail.com>
 
 Permission to use, copy, modify, and distribute this software for any
 purpose with or without fee is hereby granted, provided that the above
@@ -142,7 +141,3 @@ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
 ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 ```
-
-[0]: https://coveralls.io/github/alanhoff/node-portastic
-[1]: https://travis-ci.org/alanhoff/node-portastic
-[2]: https://david-dm.org/alanhoff/node-portastic
